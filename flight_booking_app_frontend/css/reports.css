@@ -1,0 +1,206 @@
+/* Colors */
+:root
+{
+    --primary: #425B58; /* var(--primary)*/
+    --secondary-10: #A1C0BB; /* var(--secondary-10)*/
+    --secondary-20: #669991; /* var(--secondary-20)*/
+    --secondary-30: #408075; /* var(--secondary-30)*/
+    --secondary-40: #425B58; /* var(--secondary-40)*/ 
+    --accent-10: #FFC3A1; /* var(--accent-10)*/
+    --accent-20: #CC8B66; /* var(--accent-20)*/
+    --base-0: #FFFFFF; /* var(--base-0)*/
+    --base-10: #F3F2F1; /* var(--base-10)*/
+    --base-20: #D2D0CE; /* var(--base-20)*/
+    --base-30: #A19F9D; /* var(--base-30)*/
+    --base-40: #605E5C; /* var(--base-40)*/
+    --base-50: #323130; /* var(--base-50)*/
+    --base-60: #212121; /* var(--base-60)*/
+    --base-70: #000000; /* var(--base-70)*/
+    --danger-100: #E64F41; /* var(--danger-100)*/
+    --danger-200: #BB1835; /* var(--danger-200)*/
+    --confirm-100: #4BD548; /* var(--confirm-100)*/
+    --extra-30: #488FD5; /* var(--extra-30)*/
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.body-container {
+    flex: 1;  
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+}
+
+#organizationHeader{
+    display: block;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.export-btns
+{
+    position: absolute;
+    top: 60px;
+    left: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    border: 5px;
+}
+
+.export-btn
+{
+    padding: 15px 20px;
+    background-color: var(--secondary-30);
+    width: fit-content;
+    margin-bottom: 10px;
+}
+
+.selects {
+    position: absolute;
+    top: 60px;  /* Adjust as needed */
+    right: 10px;  /* Adjust as needed */
+    display: flex;
+    flex-direction: column;
+    width: 225px;
+    padding: 30px;  /* Optional: Adds spacing */
+    border-radius: 5px;   
+}
+
+.selects label{
+    color: black;
+    text-align: left;
+}
+
+.event-info
+{
+    margin-top: 40px;
+}
+
+/** Report Table */
+#report-table-div
+{
+    width: 95%;
+    border: solid var(--base-70) 0.35em;
+    text-align: center;
+    min-height: 300px;
+    max-height: 450px;
+    margin-bottom: 2em;
+    overflow-y: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#report-table
+{
+    width: 100%;
+}
+
+#report-table th
+{
+    padding: 8px 0px;
+    border-right: 3px solid var(--base-0);
+}
+
+#report-table th:nth-last-child(1)
+{
+    border-right: none;
+}
+
+#report-table td
+{
+    padding: 4px 0px;
+}
+
+#report-table tr td
+{
+    border-right: 3px solid var(--base-0);
+}
+
+#report-table tr td:nth-last-child(1)
+{
+    border-right: none;
+}
+
+#report-table tr:nth-child(even)
+{
+    background-color: var(--secondary-10);
+    color: var(--base-70);
+}
+
+#report-table tr:nth-child(1)
+{
+    background-color: var(--secondary-30);
+    color: var(--base-0);
+}
+
+@media (max-width: 831px)
+{
+    th
+    {
+        font-weight: normal;
+    }
+
+    td, th
+    {
+        padding-left: 5px !important;
+        padding-right: 5px !important;
+    }
+}
+
+@media (max-width: 750px) 
+{
+    .selects, .export-btns
+    {
+        position: relative;
+    }
+
+    .export-btns
+    {
+        top: 0;
+        left: 0;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .selects
+    {
+        top: 0;
+        right: 0;
+        padding: 0;
+    }
+
+    #organizationHeader
+    {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 360px)
+{
+    header
+    {
+        text-align: center;
+    }
+
+    .export-btn
+    {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 270px)
+{
+    .selects
+    {
+        padding: 30px;
+    }
+}

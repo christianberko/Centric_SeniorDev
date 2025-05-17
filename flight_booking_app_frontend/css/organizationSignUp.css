@@ -1,0 +1,112 @@
+
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.body-container {
+    flex: 1;  /* Makes it take up remaining space */
+    display: flex;
+    justify-content: center;
+    align-items: center;  /* Centers the form vertically and horizontally */
+}
+
+
+label {
+    font-size: 20px;
+    text-align: center;
+    display: flex;
+}
+
+input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid white;
+    box-sizing: border-box;
+    background-color: #669991;
+    color: white;
+    font-size: 20px;
+    border-radius:  5px;
+}
+
+
+.form-container {
+    padding: 30px;
+    background-color: #669991;
+    border-radius: 10px;
+    width: 450px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+
+
+.bottom_button {
+    background-color: #425B58;
+    margin-top: 100px;
+    justify-content: space-between;
+    border-radius: 0%;
+    border-radius: 5px;
+}
+
+.orgName{
+    margin-top: 50px;
+}
+
+input.error {
+    border-color: #BB1835;
+    background-color: #fff5f5;
+    color: black;
+    animation: shake 0.5s ease-in-out;
+}
+
+/* Shake animation for invalid fields */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-5px); }
+    40%, 80% { transform: translateX(5px); }
+}
+
+
+
+@media (min-width: 481px) and (max-width: 1024px) {
+    .form-container{
+        width: 350px;
+
+    }
+
+    label {
+        font-size: 15px;
+        text-align: center;
+        display: flex;
+    }
+
+
+
+
+  }
+
+@media (max-width: 480px) {
+    .form-container{
+        width: 300px;
+    }
+
+    label {
+        font-size: 13px;
+        text-align: center;
+        display: flex;
+    }
+
+    input {
+        font-size: 15px;
+    }
+
+}

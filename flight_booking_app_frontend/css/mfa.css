@@ -1,0 +1,76 @@
+#errorMessage
+{
+    color: red;
+}
+
+.visible
+{
+    visibility: visible;
+}
+
+.hidden
+{
+    visibility: hidden;
+}
+
+.radio-buttons{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    gap: 10px;
+
+}
+
+.radio-buttons label {
+    display: flex;
+    align-items: center;
+    gap: 1px; 
+    width: 100%;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+
+form{
+    color: white;
+}
+
+
+.radio-buttons div{
+    display: flex;
+    
+    
+}
+
+.radio-buttons input[type="radio"] {
+    margin: 10px; 
+    cursor: pointer;
+}
+
+/* Error Message Styling */
+#errorMessage {
+    color: #BB1835;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+#errorMessage.hidden {
+    display: none;
+}
+
+
+/* Input Error State */
+.input-error {
+    border-color: #BB1835 !important;
+    background-color: #fff5f5 !important;
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-5px); }
+    40%, 80% { transform: translateX(5px); }
+}

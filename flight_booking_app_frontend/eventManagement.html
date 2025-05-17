@@ -1,0 +1,335 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Event Management - Centric Flights</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/master.css">
+        <link rel="stylesheet" href="css/eventManagement.css">
+        <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+        <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="img/favicon-192x192.png">
+    </head>
+    <body onload="populateOrganizations()">
+        <nav class="navbar navbar-expand-lg navbar-custom" >
+            <div class="container-fluid">
+              <a class="navbar-brand" href="/index">
+                <img src="img/logo.png" alt="Centric Logo" class="logo">
+              </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link " aria-current="page" href="/flightSearch">Flights</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link " aria-current="page" href="/hotelSearch">Hotels</a>
+                      </li>
+                  
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Administration
+                    </a>
+                    <ul id="admin-dropdown-list" class="dropdown-menu">
+                      <li><a class="dropdown-item" href="/userManagement">User Management</a></li>
+                      <li><a class="dropdown-item" href="/eventManagement">Event Management</a></li>
+                      <li><a class="dropdown-item" href="/approval">Approval</a></li>
+                      <li><a class="dropdown-item" href="/reports">Reports</a></li>
+                      <hr>
+                      <li><a class="dropdown-item" href="/organizationSignUp">Register Organization</a></li>
+                    </ul>
+                  </li>
+                  
+                </ul>
+                
+                <div class="dropdown">
+                  <button class="btn  dropdown-toggle" type="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false" >
+                    Profile
+                  </button>
+                  <ul id="profileDropdownList" class="dropdown-menu" aria-labelledby="profileDropdown">
+        
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </nav>
+            <div class="body-container">
+                <div id="event-popup" class="popup hiddenPopup">
+                    <div id="inside-event-popup">
+                    <h1 id="event-name-popup">New Event</h1>
+                        <!-- Fill out attendees -->
+                    <hr>
+                    <h2>Event Configurations</h2>
+                    <div id="eventConfigurations">
+                        <div class="column">
+                            <div class="field">
+                                <label for="eventName">Event Name</label>
+                                <input for="eventName" id="eventName" name="eventName" placeholder="Event Name" tabindex="1">
+                            </div>
+                            <div class="field">
+                                <label for="startDate">Start Date</label>
+                                <input type="date" id="startDate" name="startDate" tabindex="4">
+                            </div>
+                            <div class="field">
+                                <label for="endDate">End Date</label>
+                                <input type="date" id="endDate" name="endDate" tabindex="6">
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="field">
+                                <label for="eventLocation">Event Location</label>
+                                <input type="text" id="eventLocation" name="eventLocation" placeholder="123 Main St., City, ST" tabindex="2">
+                            </div>
+                            <div class="field">
+                                <label for="maxFlightTier">Maximum Flight Tier</label>
+                                <select id="maxFlightTier" name="maxFlightTier" tabindex="5">
+                                    <option value="1" selected>Economy</option>
+                                    <option value="2">Premium Economy</option>
+                                    <option value="3">Business</option>
+                                    <option value="4">First Class</option>
+                                </select>
+                            </div>
+                            <div class="field small-fields">
+                                <span>
+                                    <label for="dateTimeBuffer">Day Buffer</label>
+                                    <input type="number" id="dateTimeBuffer" name="dateTimeBuffer" placeholder="1" tabindex="7">
+                                </span>
+                                <span>
+                                    <label for="layoverMax">Layover Maximum</label>
+                                    <input type="number" id="layoverMax" name="layoverMax" placeholder="2" tabindex="8">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="field">
+                                <label for="airport-search">Airport Search</label>
+                                <input type="text" id="airport-search" name="airport-search" placeholder="City, State or XYZ" tabindex="3">
+                            </div>
+                            <div class="field" id="add-airport-btn-field">
+                                <svg id="addAirportBtn" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-plus"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
+                                <span>Add Airport</span>
+                            </div>
+                            <div class="field" id="hotels-allowed-field">
+                                <input type="checkbox" id="hotels-allowed" name="hotels-allowed" tabindex="9">
+                                <label for="hotels-allowed">Hotels Allowed?</label>
+                            </div>
+                            <div class="field">
+                                <label for="city-search">Staying City</label>
+                                <input type="text" id="city-search" name="city-search" placeholder="City, State" tabindex="10">
+                            </div>
+                        </div>
+                        
+                        
+                        <!-- Add Help Icons -->
+                       
+                        <!-- <label for="standardCheckedBags">Standard Checked Bags</label> -->
+                        <!-- <input type="number" id="standardCheckedBags" name="standardCheckedBags"> -->
+                        
+                        
+                        
+                        <div class="column">
+                            <div class="field">
+                                <label for="allowedAirports">Allowed Airports</label>
+                                <ul id="allowed-airport-list">
+    
+                                </ul>  
+                            </div>               
+                        </div>
+                    </div>
+                    <hr>
+                    <div id="financialConfigurations">
+                        <h2>Financial Configurations</h2>
+                        <div class="field">
+                            <label for="firstApproval">First Approval Threshold</label>
+                            <input type="number" id="firstApproval" name="firstApproval" placeholder="$500" tabindex="11">
+                        </div>
+                        <div class="field">
+                            <label for="secondApproval">Second Approval Threshold</label>
+                            <input type="number" id="secondApproval" name="secondApproval" placeholder="$600" tabindex="12">
+                        </div>
+                        <div class="field">
+                            <label for="totalBudget">Total Budget</label>
+                            <input type="number" id="totalBudget" name="totalBudget" placeholder="$10000" tabindex="13">
+                        </div>
+                    </div>
+                    <hr>
+                    <div id="userSection">
+                        <div>
+                            <h2>Admins & Attendees</h2>
+                            <button id="modifyAdminsBtn" class="modifyAdmin">Modify Admins</button>
+                            <button class="modifyAttendee" onclick="inviteUser('attendee');">Modify Attendees</button>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="popup-btns">
+                        <button id="cancelEvent" class="cancel-btn" onclick="cancelEventPopup()">Cancel</button>
+                        <button id="csv-history" class="csv-btn">Download History</button>
+                        <button id="deleteEvent" class="delete-btn">Delete</button>
+                        <button id="save" class="save-btn" onclick="createOrModifyEvent();">Save</button>
+                    </div>
+                </div>
+                </div>
+        
+                <div id="userPopup" class="popup hiddenPopup">
+                    <div id="userPopupInside" class="popupInside">
+                        <h3 id="userPopupHeader">New Attendee</h3>
+                        <hr>
+                        <div class="popupFields">
+                            <div class="field-groups">
+                                <div class="column">
+                                    <div class="field" id="userInput">
+                                        <label for="userEmailPopup">User Email</label>
+                                        <input id="userEmailPopup" name="userEmailPopup" type="text" placeholder="email@address.com">
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div class="field">
+                                        <fieldset>
+                                            <legend>Users</legend>
+                                            <div id="orgUsersPopup">
+
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                                <div class="column">
+                                    <div class="field">
+                                        <fieldset>
+                                            <legend>Groups</legend>
+                                            <div id="orgGroupsPopup">
+                             
+                                            </div>
+                                        </fieldset>
+                                    </div>                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="user-bottom">
+                            <div class="userTypeOptions">
+                                <div>
+                                    <input id="newUserBtn" type="radio" name="userType" value="new" checked="" onclick="newUserVisible(true);">
+                                    <label for="newUserBtn">New User</label>
+                                </div>
+                                <div>
+                                    <input id="existingUsersBtn" type="radio" name="userType" value="existing" onclick="newUserVisible(false);">
+                                    <label for="existingUsersBtn">Existing Users</label>
+                                </div>
+                            </div>
+                            <div class="popup-btns">
+                                <button id="cancelUser" class="popupCancelButton" onclick="cancelUserPopup()">Cancel</button>
+                                <button id="saveUser" class="popupSaveButton" onclick="saveUser()">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="indivUserPopup" class="popup hiddenPopup">
+                    <div id="indivUserPopupInside" class="popupInside">
+                        <h3 id="indivUserPopupHeader"></h3>
+                        <hr>
+                        <div class="field-groups">
+                            <div class="column">
+                                <div id="indivUserInfo">
+
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div id="indivUserGroups">
+                                    <fieldset class="checkbox-group" id="attendee-fieldset">
+                                        <legend>Attendee Groups</legend>
+                                        <div>
+
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <h5 id="booking-status-header">Booking Status</h5>
+                                <button id="indivUserBookedBtn"></button>
+                            </div>
+                        </div>
+                        <div class="popupButtons">
+                            <button id="cancelIndivUser" class="popupCancelButton">Cancel</button>
+                            <button id="saveIndivUser" class="popupSaveButton">Save</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="adminPopup" class="popup hiddenPopup">
+                    <div id="adminPopupInside" class="popupInside">
+                        <h3>Admins</h3>
+                        <hr>
+                        <div class="field-groups">
+                            <div class="column">
+                                <fieldset class="checkbox-group" id="event-planner-fieldset">
+                                    <legend>Event Planners</legend>
+                                    <div>
+
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="column">
+                                <fieldset class="checkbox-group" id="finance-fieldset">
+                                    <legend>Finance</legend>
+                                    <div>
+
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="column">
+                                <fieldset class="checkbox-group" id="approver-fieldset">
+                                    <legend>Approvers</legend>
+                                    <div>
+
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="popupButtons">
+                            <button id="cancel-admin-btn" class="popupCancelButton">Cancel</button>
+                            <button id="save-admin-btn" class="popupSaveButton">Save</button>
+                        </div>
+                    </div>
+                </div>
+        
+                <div id="organizationHeader">
+                    <h1 id="organizationNameHeader"></h1>
+                    <h4><span id="orgEventNumber"></span> Events</h4>
+                        
+                    <div id="organizationSelector">
+                        <label for="organizationList" class="dropdownLabel">Organization</label>
+                        <div id="organizationDropdown" class="dropdown">
+                            <select name="organizationList" id="organizationList" onchange="populateInfoFromOrganization()">
+                                
+                            </select>
+                        </div>
+                    </div>
+                </div> 
+        
+                <div id="eventListing">
+                    <h3>Event Details</h3>
+                    <button id="createEvent" onclick="createOrgEvent()">Create Event</button>
+                    <div id="events">
+                        
+                    </div>
+            </div>
+           
+        <script src="js/nav.js"></script>
+        <script src="js/utils.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script> 
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>       
+        <script src="js/eventManagement.js"></script>
+        <script src="js/eventManagement_validation.js"></script>
+        <footer>
+            &copy; 2024 Centric Inc. <i data-lucide="menu"></i>
+        </footer>
+    </body>
+</html>
+
+    

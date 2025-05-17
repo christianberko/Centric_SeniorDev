@@ -1,0 +1,747 @@
+/* Colors */
+:root
+{
+    --primary: #425B58; /* var(--primary)*/
+    --secondary-10: #A1C0BB; /* var(--secondary-10)*/
+    --secondary-20: #669991; /* var(--secondary-20)*/
+    --secondary-30: #408075; /* var(--secondary-30)*/
+    --secondary-40: #425B58; /* var(--secondary-40)*/ 
+    --accent-10: #FFC3A1; /* var(--accent-10)*/
+    --accent-20: #CC8B66; /* var(--accent-20)*/
+    --base-0: #FFFFFF; /* var(--base-0)*/
+    --base-10: #F3F2F1; /* var(--base-10)*/
+    --base-20: #D2D0CE; /* var(--base-20)*/
+    --base-30: #A19F9D; /* var(--base-30)*/
+    --base-40: #605E5C; /* var(--base-40)*/
+    --base-50: #323130; /* var(--base-50)*/
+    --base-60: #212121; /* var(--base-60)*/
+    --base-70: #000000; /* var(--base-70)*/
+    --danger-100: #E64F41; /* var(--danger-100)*/
+    --danger-200: #BB1835; /* var(--danger-200)*/
+    --caution-100: #8a8a1c;
+    --confirm-100: #4BD548; /* var(--confirm-100)*/
+    --extra-30: #488FD5; /* var(--extra-30)*/
+}
+
+/* Basics */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: 'Instrument Sans', Arial, sans-serif;
+    background-color: var(--base-0);
+    /* display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between; */
+    height: 100vh;
+}
+
+.body-container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    
+    width: 100%;
+}
+
+input
+{
+    font-family: 'Instrument Sans', Arial, sans-serif;
+}
+
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button
+{
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number]
+{
+    -moz-appearance: textfield;
+}
+
+/*footer*/
+footer{
+    background-color:var(--secondary-30);
+    width: 100%;
+    text-align: center;
+    padding: 1%;
+    color: var(--base-0);
+}
+
+/*banner*/
+.banner {
+    
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 40vh; 
+    overflow: hidden;
+    align-items: center; 
+    justify-content: center;
+}
+
+.banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.banner-txt {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.banner-txt h1 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* Nav styles */
+
+.navbar-custom {
+    background-color: var(--secondary-30);
+    
+
+box-shadow: 0px 1px 8px 0px rgba(0,0,0,0.75);
+    margin-bottom: 10px;
+    
+}
+
+
+.navbar, .navbar-brand, .nav-link, .navbar-custom {
+    color: var(--base-0);
+    position:sticky;
+    top: 0;
+    z-index: 500;
+    
+}
+
+
+.logo{
+    width: 50px;
+    height: 50px;
+    /* margin-right: 10px; */
+}
+
+.btn{
+    background-color: var(--secondary-20);
+}
+.btn:hover{
+    background-color: var(--secondary-10);
+}
+
+/* index buttons*/
+.container {
+    gap: 2em;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2em;
+    background-color: var(--base-0);
+     
+}
+
+.about-container{
+    padding: 15px;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    margin-left: 1em;
+    margin-right: 1em;
+    min-height: 20vh;
+    padding: 2em;
+    background-color: var(--secondary-30);
+    border-radius: 1.5em;
+    font-size: .5em;
+}
+
+
+.box h1, label {
+    color: var(--base-0); 
+    text-align: center;
+}
+
+input
+{
+    font-family: 'Instrument Sans', Arial, sans-serif;
+}
+
+/* Organization Header */
+#organizationHeader
+{   
+    margin-top: 120px;
+    padding-top: 1.5em;
+    padding-bottom:1.5em;
+}
+
+#organizationHeader > h4
+{
+    padding-top: 2px;
+    color: #605E5C;
+}
+
+#organizationSelector
+{
+    position: absolute;
+    right: 2em; 
+    top: 8em; 
+}
+
+.dropdownLabel
+{
+    font-size: 0.75em;
+    color: var(--base-70);
+}
+
+/* .dropdownLabel
+{
+    font-size: 0.75em;
+    color: var(--base-70);
+}
+
+.dropdown
+{
+    position: relative;
+}
+
+.dropdown::after
+{
+    --size: 0.5em;
+    position: absolute;
+    content: "";
+    color: var(--base-0);
+    right: 0.75em;
+    pointer-events: none;
+}
+
+.dropdown::after 
+{
+    border-left: var(--size) solid transparent;
+    border-right: var(--size) solid transparent;
+    border-top: var(--size) solid var(--base-10);
+    top: 40%;
+}
+
+.dropdown select
+{
+    appearance: none;
+    font-family: 'Instrument Sans', Arial, sans-serif;
+    padding: 0.5em 0.75em;
+    background-color: var(--primary);
+    color: var(--base-0);
+    cursor: pointer;
+    border-radius: 5px;
+    width: 10vw;
+    border: none;
+} */
+
+/* Popups */
+
+.hiddenPopup
+{
+    display: none;
+}
+
+.visiblePopup
+{
+    display: block;
+}
+
+button
+{
+    padding: 0.6em;
+    border: none;
+    
+    color: var(--base-0);
+    border-radius: 8px;
+    width: 10em;
+}
+
+.save-btn
+{
+    background-color: var(--confirm-100);
+}
+
+.delete-btn
+{
+    background-color: var(--danger-200);
+}
+
+.cancel-btn
+{
+    background-color: var(--danger-100);
+}
+
+/* Pop Ups */
+.popup
+{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+.popupInside
+{
+    position: absolute;
+    top: 32.5%;
+    left: 19%;
+    border: 0.15em solid var(--base-0);
+    border-radius: 8px;
+    background-color: var(--secondary-20);
+    color: var(--base-0);
+    padding: 1em;
+    min-height: 40%;
+    width: 50%;
+}
+
+.popupInside > h3
+{
+    font-size: 1.5em;
+    text-align: center;
+    margin-bottom: 1.5em;
+}
+
+.popupFields div
+{
+    float: left;
+    margin-right: 2.25em;
+    margin-bottom: 1em;
+}
+
+.popupInside input, .popupInside label
+{
+    display: block;
+}
+
+.popupInside label
+{
+    font-size: 0.75em;
+}
+
+.popupInside input
+{
+    color: var(--base-0);
+    font-size: 1em;
+    border: 1px solid var(--base-0);
+    border-radius: 8px;
+    background: none;
+    padding: 1em;
+}
+
+.popupInside input::placeholder
+{
+    color: var(--base-20);
+}
+
+.popupInside input::selection
+{
+    border: none;
+}
+
+.popupButtons
+{
+    clear: both;
+    text-align: center;
+    padding-top: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.popupSaveButton
+{
+    margin-left: 1em;
+    background-color: var(--secondary-40);
+}
+
+.popupCancelButton
+{
+    margin-right: 1em;
+    background-color: var(--secondary-30);
+}
+
+/** Buttons */
+
+/** Disabled Button */
+.disabled
+{
+    background-color: gray !important;
+    color: darkgray !important;
+}
+
+/* Form fields container */ /* Will need to be changed for media queries */
+.field-groups 
+{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+
+select{
+    background-color: var(--secondary-30);
+    padding:10px;
+    color: white;
+    border-radius: 5px;
+    width: auto;
+}
+
+/** Loader */
+.fullLoader
+{
+    margin-top: 2.5em;
+    text-align: center;
+}
+
+.loader {
+    border: 16px solid var(--base-20);
+    border-top: 16px solid var(--secondary-20);
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 1s linear infinite;
+    margin-left: auto;
+    margin-right: auto;
+}
+  
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loaderText
+{
+    margin-top: 1em;
+    font-weight: bold;
+    font-family: 'Instrument Sans', 'sans-serif';
+}
+
+/** Warnings */
+#general-warning-message
+{
+    visibility: hidden;
+}
+
+/** Tool tips */
+.centric-tooltip
+{
+    position: relative;
+}
+
+.centric-tooltip .centric-tooltip-text
+{
+    background-color: var(--base-30);
+    color: var(--base-0);
+    text-align: center;
+    border-radius: 8px;
+    padding: 10px;
+
+    /* Positioning */
+    position: absolute;
+    z-index: 1;
+
+    opacity: 0;
+    transition: opacity 0.25s;
+}
+
+.centric-tooltip-text.hover-top
+{
+    width: 300px;
+    left: 20%;
+    bottom: 150%;
+    margin-left: -250px;
+}
+
+.centric-tooltip-text.hover-left
+{
+    width: 250px;
+    top: -5px;
+    right: 105%;
+}
+
+.centric-tooltip:hover .centric-tooltip-text
+{
+    opacity: 1;
+}
+
+/** Hotel Entry */
+.hotel-listing {
+    background-color: var(--secondary-20);
+    color: var(--base-0);
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid #669991;
+    font-size: 16px;
+    position: relative;
+}
+
+/** Hotel Offer Entry */
+.hotel-offer-listing {
+    background-color: var(--secondary-20);
+    color: var(--base-0);
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid #669991;
+    font-size: 16px;
+    position: relative;
+}
+
+/** Flight Entry */
+.flightListing {
+    background-color: var(--secondary-20);
+    color: var(--base-0);
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid #669991;
+    font-size: 16px;
+    position: relative;
+}
+
+.hiddenListing {
+    display: none;
+}
+
+.airline-img
+{
+    max-width: 10%;
+    max-height: 800px;
+    margin-right: 15px;
+}
+
+.leg-info
+{
+    
+}
+
+.outgoingDiv
+{
+    border-right: 3px solid var(--base-0);
+    padding-right: 20px;
+    float: left;
+}
+
+.returningDiv
+{
+    padding-left: 20px;
+    float: right;
+}
+
+.flightLeg
+{
+    margin-top: 8px;
+}
+
+.flightLeg div
+{
+    margin-bottom: 5px;
+}
+
+.departure-header, .returning-header
+{
+    /* font-weight: bold; */
+    text-decoration: underline;
+}
+
+.city-to-city
+{
+    font-size: 1.6em;
+}
+
+.duration
+{
+    float: right;
+    font-size: 1.15em;
+}
+
+.plane-info
+{
+    float: right;
+    padding-left: 1em;
+}
+
+.plane-info::after
+{
+    clear: both;
+}
+
+.ancillary-detail
+{
+    clear: both;
+}
+
+.request-booking-btn
+{
+    position: relative;
+    margin-top: 85px;
+    color: var(--base-0);
+    background-color: var(--secondary-40);
+}
+
+.price
+{
+    position: absolute;
+    right: 5px;
+    top: 20%;
+    margin-right: 30px;
+    text-align: center;
+}
+
+.price .flight-price, .hotel-price
+{
+    font-size: 1.75em;
+}
+
+/** Approval Status Buttons */
+.notBookedBtn
+{
+    background-color: var(--danger-100);
+    color: var(--base-0);
+}
+
+.notInEventBtn
+{
+    background-color: var(--extra-30);
+    color: var(--base-0);
+}
+
+.deniedBtn
+{
+    background-color: var(--danger-200);
+    color: var(--base-0);
+}
+
+.confirmedBtn
+{
+    background-color: var(--confirm-100);
+    color: var(--base-0);
+}
+
+.pendingBtn
+{
+    background-color: var(--caution-100);
+    color: var(--base-0);
+}
+
+/** Empty Results */
+.no-info-div
+{
+    height: 100%;
+    font-size: 1.5em;
+    align-items: center;
+    justify-content: center;
+    padding-top: 100px;
+}
+
+.no-info-div span
+{
+    margin-left: 15px;
+}
+
+/** Auto-complete */
+.ui-helper-hidden-accessible
+{
+    display: none;
+}
+
+.ui-menu.ui-widget.ui-widget-content.ui-autocomplete.ui-front
+{
+    padding-left: 5px !important;
+    list-style-type: none;
+    background-color: var(--secondary-40);
+    color: var(--base-0);
+    width: 250px;
+    border: 1px solid var(--secondary-20);
+    border-radius: 5px;
+    max-height: 150px;
+    overflow-y: scroll;
+}
+
+.ui-menu.ui-widget.ui-widget-content.ui-autocomplete.ui-front li
+{
+    padding: 2px;
+    left: 0;
+    border-width: 60%;
+    border-bottom: 2px solid var(--base-0);
+}
+
+.ui-menu.ui-widget.ui-widget-content.ui-autocomplete.ui-front li:nth-last-child(1)
+{
+    padding: 2px;
+    left: 0;
+    border-width: 60%;
+    border-bottom: none
+}
+
+.ui-menu.ui-widget.ui-widget-content.ui-autocomplete.ui-front li:hover
+{
+    background-color: var(--secondary-10);
+    color: var(--base-0);
+}
+
+.ui-helper-hidden-accessible {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+/** Autocomplete */
+.ui-autocomplete
+{
+    position: absolute;
+    top: 27.5%;
+    left: 13.5%;
+}
+
+/** Full Page Loader */
+#full-page-loader
+{
+    display: none;
+    align-items: center;
+    justify-content: center;
+}

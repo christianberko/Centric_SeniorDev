@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>User & Organization Management - Centric Flights</title>
+        <link href='https://fonts.googleapis.com/css?family=Instrument Sans' rel='stylesheet'>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/master.css">
+        <link rel="stylesheet" href="css/userManagement.css">
+        <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+        <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="img/favicon-192x192.png">
+    </head>
+    <body onload="populateOrganizations();">
+        <nav class="navbar navbar-expand-lg navbar-custom" >
+            <div class="container-fluid">
+              <a class="navbar-brand" href="/index">
+                <img src="img/logo.png" alt="Centric Logo" class="logo">
+              </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+                
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link " aria-current="page" href="/flightSearch">Flights</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link " aria-current="page" href="/hotelSearch">Hotels</a>
+                </li>
+                  
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Administration
+                    </a>
+                    <ul id="admin-dropdown-list" class="dropdown-menu">
+                      <li><a class="dropdown-item" href="/userManagement">User Management</a></li>
+                      <li><a class="dropdown-item" href="/eventManagement">Event Management</a></li>
+                      <li><a class="dropdown-item" href="/approval">Approval</a></li>
+                      <li><a class="dropdown-item" href="/reports">Reports</a></li>
+                      <hr>
+                      <li><a class="dropdown-item" href="/organizationSignUp">Register Organization</a></li>
+                    </ul>
+                  </li>
+                  
+                </ul>
+                
+                <div class="dropdown">
+                  <button class="btn  dropdown-toggle" type="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false" >
+                    Profile
+                  </button>
+                  <ul id="profileDropdownList" class="dropdown-menu" aria-labelledby="profileDropdown">
+        
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </nav>
+          
+        <div id="organizationHeader">
+            <h1 id="organizationNameHeader">Organization Name</h1>
+            <h4><span id="orgEventNumber">[]</span> Events</h4>
+
+            <div id="organizationSelector">
+                <label for="organizationList" class="dropdownLabel">Organization</label>
+                <div id="organizationDropdown" class="dropdown">
+                    <select name="organizationList" id="organizationList" onchange="populateInfoFromOrganization()">
+                        
+                    </select>
+                </div>
+            </div>
+        </div>      
+        <div class="listings">
+            <div id="userListing">
+                <button id="inviteUser" onclick="inviteUser();">Invite User</button>
+                <h1>Users</h1>
+                <div id="users">
+                    
+                </div>
+            </div>
+            <div id="groupListing">
+                <button id="createGroup" onclick="createGroup()">Create Group</button>
+                <h1>Groups</h1> 
+                <div id="groups">
+    
+                </div>
+            </div>
+        </div>
+
+        <div id="userPopup" class="popup hiddenPopup">
+            <div id="userPopupInside" class="popupInside">
+                <h3 id="userPopupHeader">User</h3>
+                <div class="popupFields">
+                    <div class="field-groups">
+                        <div>
+                                <label for="userEmailPopup" id="user-email-popup-label">User Email</label>
+                                <input id="userEmailPopup" name="userEmailPopup" type="text" placeholder="email@address.com">
+                        </div>
+                            <div>
+                                <fieldset class="checkbox-group" id="attendee-fieldset">
+                                    <legend>Attendee Groups</legend>
+                                    <div>
+
+                                    </div>
+                                </fieldset>                                
+                            </div>
+                        <div>
+                                <fieldset class="checkbox-group" id="admin-fieldset">
+                                    <legend>Admin Groups</legend>
+                                    <div>
+
+                                    </div>
+                                </fieldset>     
+                        </div>
+                    </div>
+                </div>
+                <div class="popupButtons">
+                    <button id="cancelUser" class="popupCancelButton" onclick="cancelUserPopup()">Cancel</button>
+                    <button id="saveUser" class="popupSaveButton" onclick="saveUser()">Save</button>
+                </div>
+            </div>
+        </div>
+        
+        <div id="groupPopup" class="popup hiddenPopup">
+            <div id="groupPopupInside" class="popupInside">
+                <h3 id="groupPopupHeader">Group</h3>
+                <div class="popupFields" id="groupPopupFields">
+                    <div class="field-groups" id="groupPopupFieldGroups">
+                        <div class="column">
+                            <div class="field">
+                                <label for="groupNamePopup">Group name</label>
+                                <input id="groupNamePopup" name="groupNamePopup" type="text" placeholder="Group Name" tabindex="1">
+                            </div>
+                            <div class="field">
+                                <label for="checkedBagsPopup">Default number of checked bags</label>
+                                <input id="checkedBagsPopup" name="checkedBagsPopup" type="number" min="0" placeholder="1" tabindex="4">
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="field">
+                                <label for="firstThresholdPopup">Percentage above first threshold</label>
+                                <input id="firstThresholdPopup" name="firstThresholdPopup" type="number" placeholder="0%" tabindex="2">
+                            </div>
+                            <div class="field">
+                                <label for="maxLayoversPopup">Default maximum layovers</label>
+                                <input id="maxLayoversPopup" name="maxLayoversPopup" type="number" min="0" placeholder="2" tabindex="5">
+                            </div>
+                            <div class="field">
+                                <label for="dateTimeBufferPopup">Default day buffer</label>
+                                <input id="dateTimeBufferPopup" name="dateTimeBufferPopup" type="number" min="0" placeholder="1" tabindex="7">
+                            </div>
+                        </div>
+                        <div class="column">
+                            <div class="field">
+                                <label for="secondThresholdPopup">Percentage above second threshold</label>
+                                <input id="secondThresholdPopup" name="secondThresholdPopup" type="number" placeholder="0%" tabindex="3">
+                            </div>
+                            <div class="field">
+                                <label for="flightTierPopup">Default flight tier</label>
+                                <select id="flightTierPopup" name="flightTierPopup" tabindex="6">
+                                    <option value="1">Economy</option>
+                                    <option value="2">Premium Economy</option>
+                                    <option value="3">Business</option>
+                                    <option value="4">First Class</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="popupButtons">
+                    <button id="cancelGroup" class="popupCancelButton" onclick="cancelGroupPopup()" tabindex="8">Cancel</button>
+                    <button id="saveGroup" class="popupSaveButton" onclick="saveGroup()" tabindex="9">Save</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="delete-user-popup" class="popup hiddenPopup">
+            <div class="popupInside">
+                <p>Are you sure you want to remove <span id="delete-user-name"></span> from your organization?</p>
+                <button id="cancelDeleteUser" class="cancel-btn" onclick="cancelUserDeletion()">Cancel</button>
+                <button id="confirmDeleteUser" onclick="confirmUserDeletion()">Delete</button>
+                <p id="delete-user-error-message"></p>
+            </div>
+        </div>
+
+        <div id="delete-group-popup" class="popup hiddenPopup">
+            <div class="popupInside">
+                <p>Are you sure you want to delete the "<span id="deleteGroupName"></span>" group?</p>
+                <button id="cancelDeleteGroup" class="cancel-btn" onclick="cancelGroupDeletion()">Cancel</button>
+                <button id="confirmDeleteGroup" onclick="confirmGroupDeletion()">Delete</button>
+                <p id="deleteGroupErrorMessage"></p>
+            </div>
+        </div>
+        <script src="js/userManagement.js"></script>
+        <script src="js/userManagement_validation.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <script src="js/nav.js"></script>
+        <script src="js/utils.js"></script>
+        <footer>@ 2025 Centric Inc</footer>
+    </body>
+</html>

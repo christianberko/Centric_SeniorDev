@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flight Searching - Centric Flights</title>
+  <link href='https://fonts.googleapis.com/css?family=Instrument Sans' rel='stylesheet'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/master.css">
+  <link rel="stylesheet" href="css/flightSearch.css">
+  <script src="https://assets.duffel.com/components/3.7.25/duffel-ancillaries.js"></script>
+  <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="img/favicon-192x192.png">
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-custom" >
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/index">
+        <img src="img/logo.png" alt="Centric Logo" class="logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="/flightSearch">Flights</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="/hotelSearch">Hotels</a>
+          </li>
+          
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Administration
+            </a>
+            <ul id="admin-dropdown-list" class="dropdown-menu">
+              <li><a class="dropdown-item" href="/userManagement">User Management</a></li>
+              <li><a class="dropdown-item" href="/eventManagement">Event Management</a></li>
+              <li><a class="dropdown-item" href="/approval">Approval</a></li>
+              <li><a class="dropdown-item" href="/reports">Reports</a></li>
+              <hr>
+              <li><a class="dropdown-item" href="/organizationSignUp">Register Organization</a></li>
+            </ul>
+          </li>
+          
+        </ul>
+        
+        <div class="dropdown">
+          <button class="btn  dropdown-toggle" type="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false" >
+            Profile
+          </button>
+          <ul id="profileDropdownList" class="dropdown-menu" aria-labelledby="profileDropdown">
+
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="">
+    <div id="event">
+      <h5>Event</h5>
+          <select name="eventList" id="eventList" onchange="eventSwitch();">
+    
+          </select>
+      <div id="selected-event-info">
+        <span id="selected-event-org"></span>
+        <h3 id="selected-event-name"></h3>
+        <div id="selected-event-other">
+          <div id="selected-event-location"></div> 
+          <div id="selected-event-dates"></div>
+        </div>
+      </div>
+    </div>
+  
+    <div id="filterMenu" class="hiddenMenu">
+      <div id="costRange" class="filter-section">
+        <h4>Cost Range</h4>
+        <label for="highEndCost">High End Cost</label>
+        <input type="number" name="highEndCost" id="highEndCost" placeholder="$700">
+      </div>
+      <div id="timeRanges" class="filter-section">
+        <h4>Time Ranges</h4>
+        <div id="outgoingDepartureTimeRange">
+          <h4>Outgoing Departure Time Range</h4>
+          <input type="time" id="outLowEndDepTime" placeholder="4:00 AM">
+          <input type="time" id="outHighEndDepTime" placeholder="11:59 PM">
+        </div>
+        <div id="outgoingArrivalTimeRange">
+          <h4>Outgoing Arrival Time Range</h4>
+          <input type="time" id="outLowEndArrTime" placeholder="4:00 AM">
+          <input type="time" id="outHighEndArrTime" placeholder="11:59 PM">
+        </div>
+        <div id="returnDepartureTimeRange">
+          <h4>Return Departure Time Range</h4>
+          <input type="time" id="retLowEndDepTime" placeholder="4:00 AM">
+          <input type="time" id="retHighEndDepTime" placeholder="11:59 PM">
+        </div>
+        <div id="returnArrivalTimeRange">
+          <h4>Return Arrival Time Range</h4>
+          <input type="time" id="retLowEndArrTime" placeholder="4:00 AM">
+          <input type="time" id="retHighEndArrTime" placeholder="11:59 PM">
+        </div>
+      </div>
+      <!-- <div id="luxuryAccommodations" class="checkboxes filter-section">
+        <h4>Luxury Accommodations</h4>
+        <label for="wifi">
+          <input type="checkbox" id="wifi" name="wifi" value="wifi">
+          <span>Wi-Fi</span>
+        </label>
+        <label for="outlets">
+          <input type="checkbox" id="outlets" name="outlets" value="outlets">
+          <span>Outlets</span>
+        </label>
+        <label for="entertainment">
+          <input type="checkbox" id="entertainment" name="entertainment" value="entertainment">
+          <span>Entertainment</span>
+        </label>
+        <label for="refreshments">
+          <input type="checkbox" id="refreshments" name="refreshments" value="refreshments">
+          <span>Refreshments</span>
+        </label>
+      </div> -->
+      
+      <!-- <div id="seatTypeAvailability" class="checkboxes filter-section">
+        <h4>Seat Type Availability</h4>
+        <label for="aisle">
+          <input type="checkbox" id="aisle" name="aisle" value="aisle">
+          <span>Aisle</span>
+        </label>
+        <label for="middle">
+          <input type="checkbox" id="middle" name="middle" value="middle">
+          <span>Middle</span>
+        </label>
+        <label for="window">
+          <input type="checkbox" id="window" name="window" value="window">
+          <span>Window</span>
+        </label>
+      </div> -->
+  
+      <div id="connections" class="filter-section">
+        <h4>Stops</h4>
+        <div>
+          <label for="outgoingConnections">Max Outgoing Connections</label>
+          <input type="number" min="1" name="outgoingConnections" id="outgoingConnections">
+        </div>
+        <div>
+          <label for="returningConnections">Max Returning Connections</label>
+          <input type="number" min="1" name="returningConnections" id="returningConnections">
+        </div>
+      </div>
+  
+      <div id="airline" class="checkboxes filter-section">
+        <h4 class="filterHeader">Airline</h4>
+        <div id="airlineList">
+          <label for="airlineAA">
+            <input type="checkbox" id="airlineAA" name="airlineSelected" value="AA">
+            <span>AA</span>
+          </label>
+          <label for="airlineUA">
+            <input type="checkbox" id="airlineUA" name="airlineSelected" value="UA">
+            <span>UA</span>
+          </label>
+        </div>
+      </div>
+      <button onclick="filterFlights();">Filter</button>
+      <button onclick="resetFilters();">Reset Filters</button>
+    </div>
+  
+    <div id="sortingMenu" class="hiddenMenu">
+      <div id="order" class="checkboxes filter-section">
+        <h4>Order</h4>
+        <label for="ascending">
+          <input type="radio" id="ascending" name="orderOfFlights" checked>
+          <span>Ascending</span>
+        </label>
+        <label for="descending">
+          <input type="radio" id="descending" name="orderOfFlights">
+          <span>Descending</span>
+        </label>
+      </div>
+    
+      <div id="sortingOptions" class="checkboxes filter-section">
+        <h4>Sorting Options</h4>
+        <label for="cost">
+          <input type="radio" id="cost" name="sortingOption" checked>
+          <span>Cost</span>
+        </label>
+        <label for="numberOfOutgoingConnections">
+          <input type="radio" id="numberOfOutgoingConnections" name="sortingOption">
+          <span>Number of Connections (Outgoing)</span>
+        </label>
+        <label for="numberOfReturningConnections">
+          <input type="radio" id="numberOfReturningConnections" name="sortingOption">
+          <span>Number of Connections (Returning)</span>
+        </label>
+        <label for="dateTimeCloseness">
+          <input type="radio" id="dateTimeCloseness" name="sortingOption">
+          <span>Date/Time Closeness</span>
+        </label>
+        <button onclick="sortFlights()">Sort</button>
+      </div>
+    </div>
+  
+      <div id="searchInputs">
+          <span>
+            <label for="departureCity">Departure City</label>
+            <input id="departureCity" name="departureCity" type="text">
+          </span>
+          <span>
+            <label for="arrivalCity">Arrival City</label>
+            <input id="arrivalCity" name="arrivalCity" type="text" onchange="generateSearchParameterWarnings();">
+          </span>
+          <span>
+            <label for="departureDate">Departure Date</label>
+            <input type="date" id="departureDate" name="departureDate" onchange="generateSearchParameterWarnings();">
+          </span>
+          <span>
+            <label for="returnDate">Return Date</label>
+            <input type="date" id="returnDate" name="returnDate" onchange="generateSearchParameterWarnings();">
+          </span>
+          <span>
+            <label for="flightClass">Class</label>
+            <select name="flightClass" id="flightClass" onchange="generateSearchParameterWarnings();">
+              <option value="1">Economy</option>
+              <option value="2">Premium Economy</option>
+              <option value="3">Business</option>
+              <option value="4">First Class</option>
+            </select>
+          </span>
+          
+          
+          <button id="go-flight-search">Go</button>
+          <div id="general-warning-message" class="centric-tooltip">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="orange" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-triangle-alert"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+            <span class="centric-tooltip-text hover-top"><div id="airport-warning-msg"></div><div id="arr-warning-msg"></div><div id="dep-warning-msg"></div><div id="tier-warning-msg"></div></span>
+          </div>
+          
+      </div>
+      <div class="results-container">
+        <div class="filters-sorting-container">
+          <button onclick="toggleVisibility('filterMenu')">Filters</button>
+          <button onclick="toggleVisibility('sortingMenu')">Sorting</button>
+        </div>
+      
+        <div id="searchResults">
+          <!-- Flight results will be dynamically added here -->
+        </div>
+      </div>
+      <div id="notification-popup" class="popup hiddenPopup">
+        <div id="notification-popup-inside">
+          <div>
+            <p id="notification-message">Test</p>
+            <button onclick="closeNotificationPopup();">Okay</button>
+          </div>
+        </div>
+      </div>
+      <div id="full-page-loader" class="popup hiddenPopup">
+        <!-- Loader for booking a flight goes here when booking occurs -->
+      </div>
+      <div id="duffel-ancillaries-container" class="popup hiddenPopup" style="z-index: 1000;">
+        <div></div>
+      </div>
+    
+  </div>
+
+  
+  <script src="js/nav.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script> 
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
+  <script src="js/flightSearch.js"></script>
+  <script src="js/flightSearch_validation.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/date-fns@4.1.0/cdn.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <footer>@ 2025 Centric Inc</footer>
+</body>
+</html>

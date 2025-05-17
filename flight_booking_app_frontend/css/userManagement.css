@@ -1,0 +1,503 @@
+/* User & Group Section */
+body
+{
+    justify-content: center;
+    text-align: center;
+}
+
+.listings
+{
+    margin-top: 100px;
+}
+
+#userListing, #groupListing
+{
+    width: 95%;
+    border: solid var(--base-70) 0.35em;
+    text-align: center;
+    min-height: 300px;
+    max-height: 450px;
+    margin-bottom: 2em;
+    overflow-y: auto;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+}
+
+#userListing > h1, #groupListing > h1
+{
+    clear: both;
+    padding-bottom: 1.2em;
+}
+
+#inviteUser, #createGroup
+{
+    position: relative;
+    float: right;
+    right: 2em;
+    top: 1em;
+    padding: 0.6em;
+    border: none;
+    background-color: var(--extra-30);
+    color: var(--base-0);
+    border-radius: 8px;
+    font-size: 0.9em;
+    width: 10em;
+}
+
+.individualUser, .individualGroup
+{
+    background-color: var(--secondary-30);
+    color: var(--base-0);
+    font-size: 1.2em;
+    text-align: left;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-between;
+    width: 97.5%;
+    padding: 1.5em 1.2em;
+    margin-bottom: 1.3em;
+    flex-shrink: 0;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.individualUser > *, .individualGroup > *
+{
+    flex-basis: 0%;
+    flex-grow: 1;
+    text-align: left;
+}
+
+.individualUser button
+{
+    flex-grow: 0.5;
+    text-align: center;
+}
+
+.individualGroup > button
+{
+    flex-grow: 0.3;
+    text-align: center;
+}
+
+.individualUser .editButton, .individualGroup .editButton
+{
+    margin-right: 20px;
+}
+
+.userName, .groupName
+{
+    font-weight: bold;
+}
+
+.roleDropdown select
+{
+    text-align: center;
+}
+
+button
+{
+    background-color: #408075;
+}
+
+
+#groupPopupInside{
+    width: 1000px;
+   
+    
+
+    
+}
+
+
+#users {
+    #users {
+        display: flex;
+        flex-direction: column; 
+        overflow-x: auto; 
+        white-space: nowrap; 
+        width: 100%; 
+    }
+}
+
+.editButton{
+    
+    padding: 0.6em;
+    border: none;
+    background-color: #4BD548;
+    color: var(--base-0);
+    border-radius: 8px;
+    font-size: 0.9em;
+    width: 10em;
+}
+
+.deleteButton{
+    
+    padding: 0.6em;
+    border: none;
+    background-color: #BB1835;
+    color: var(--base-0);
+    border-radius: 8px;
+    font-size: 0.9em;
+    width: 10em;
+}
+
+#delete-group-popup
+{
+    flex: 1;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+
+
+
+
+#deleteGroupErrorMessage, #delete-user-error-message
+{
+    margin-top: 20px;
+}
+
+
+#cancelDeleteUser, #confirmDeleteUser, #cancelDeleteGroup, #confirmDeleteGroup{
+    margin-top: 10px;
+}
+
+#delete-user-popup > div.popupInside, #delete-group-popup > div.popupInside
+{
+    min-height: 15%;
+}
+
+.popup
+{
+    justify-content: center;
+    align-items: center;
+}
+
+.popupInside
+{
+    position: static;
+    top: 0;
+    left: 0;
+}
+
+.popupFields div 
+{
+    float: none;
+    margin-right: 0;
+}
+
+.popupButtons
+{
+    width: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.group-box
+{
+    display: flex;
+}
+
+.group-box > *
+{
+    flex-basis: 0%;
+    text-align: left;
+}
+
+.group-box > label
+{
+    flex-grow: 1;
+    margin-left: 20px;
+}
+
+#user-email-popup-label
+{
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+#userEmailPopup
+{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+fieldset > div
+{
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+#groupPopupFieldGroups input
+{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media  (max-width: 1400px) {
+    .adminRoles, .attendeeRoles
+    {
+        display: none;
+    }
+
+    #userPopupInside{
+        width: 800px;
+    }
+
+    #groupPopupInside{
+        width: 850px;
+    }
+
+    .popupInside input{
+        padding: .55em;
+   }
+
+   #groupPopupFieldGroups{
+        gap: 0px;
+   }
+}
+
+@media  (max-width: 1300px) {
+    #userPopupInside{
+        width: 700px;
+    }
+
+    /* #groupPopupInside{
+        width: 900px;
+    } */
+}
+
+@media (max-width: 1050px)
+{
+    #userListing > h1, #groupListing > h1
+    {
+        padding-bottom: 0;
+    }
+
+    .individualUser, .individualGroup
+    {
+        flex-direction: column;
+        justify-content:center;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .adminRoles, .attendeeRoles
+    {
+        display: block;
+    }
+
+    .individualUser .editButton, .individualGroup .editButton
+    {
+        margin-right: 0;
+    }
+}
+
+@media (max-width:900px){
+  
+    #cancelDeleteUser, #confirmDeleteUser, #cancelDeleteGroup, #confirmDeleteGroup{
+        font-size: 0.65em;
+        width: 10em;
+    }
+
+
+    .popupFields div{
+        float: none;
+        margin-right: 0;
+    }
+
+    /* #groupPopupInside{
+        width: 850px;
+    } */
+    .popupInside{
+        overflow-y: auto;
+
+    }
+
+    .popupButtons{
+        width: 100%;
+    }
+    
+
+}
+
+
+@media  (max-width: 768px) {
+    .userName
+    {
+        font-weight: normal;
+    }
+
+    #organizationHeader
+    {
+        margin-top: 20px;
+    }
+
+    #organizationSelector
+    {
+        position: static;
+    }
+
+    .listings
+    {
+        margin-top: 20px;
+    }
+
+    #inviteUser, #createGroup{
+        font-size: 1em;
+        width: 10em;
+        position: static;
+        float: none;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    
+
+    #userPopupInside, #groupPopupInside{
+        width: 500px;
+    }
+
+
+    .field-groups{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        
+    }
+
+    .popupInside{
+        max-height: 400px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .popupInside > h3
+    {
+        margin-bottom: 0;
+    }
+
+    .field div{
+    display: flex;
+    }
+
+    .field div label{
+        margin: 10px;
+    }
+    
+    /* #groupPopupFields .field-groups .column{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    } */
+    
+    .popupFields div{
+        float: none;
+        margin-right: 0;
+        margin-bottom: 0;
+    }
+    
+    .popupInside label {
+        margin-top: 20px;
+    }
+
+    /* #flightTierPopup{
+        margin-top:20px;
+    } */
+
+
+    .individualUser .editButton{
+        margin-right: 0px;
+    }
+
+    
+}
+
+@media  (max-width: 600px) {
+    .individualUser, .individualGroup{
+        min-width: 260px;
+    }
+
+    .popupInside{
+        max-width: 350px;
+
+    }
+
+    .field div{
+        display: initial;
+        }
+
+    .popupInside input, .popupInside label {
+          
+    }
+
+    .popupInside p{
+        font-size:0.75em;
+    }
+
+    .popupButtons{
+        margin-top: 20px;
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 576px)
+{
+    .popupButtons
+    {
+        display: block;
+    }
+
+    .popupSaveButton
+    {
+        margin-top: 10px;
+        margin-left: 0;
+    }
+
+    .popupCancelButton
+    {
+        margin-right: 0;
+    }
+}
+
+/* Add CSS for Validation Style */
+.error-message {
+    color: #BB1835;
+    font-weight: bold;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.invalid-input {
+    border: 2px solid #BB1835 !important;
+    background-color: #fdf7f7;
+}
+
+input:focus.invalid-input {
+    box-shadow: 0 0 5px #BB1835;
+}
+
+@keyframes shake {
+    0%, 100% {transform: translateX(0);}
+    10%, 30%, 50%, 70%, 90% {transform: translateX(-10px);}
+    20%, 40%, 60%, 80% {transform: translateX(10px);}
+}
+
+.shake-animation {
+    animation: shake 1s ease-in-out;
+    box-shadow: 0 0 5px rgba(255,0,0,0.3);
+    border-color: #BB1835 !important;
+}
