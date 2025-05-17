@@ -1,0 +1,27 @@
+{
+  "name": "flight_booking_app_backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@duffel/api": "^4.9.0",
+    "amadeus": "^11.0.0",
+    "aws-sdk": "^2.1692.0",
+    "cjs-loader": "^0.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "flight_booking_app_backend": "file:",
+    "generate-password": "^1.7.1",
+    "nodemon": "^3.1.7",
+    "qrcode": "^1.5.4",
+    "speakeasy": "^2.0.0"
+  }
+}
